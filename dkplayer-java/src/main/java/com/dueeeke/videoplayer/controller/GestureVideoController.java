@@ -101,9 +101,9 @@ public abstract class GestureVideoController extends BaseVideoController{
                 mChangePosition = Math.abs(distanceX) >= Math.abs(distanceY);
                 if (!mChangePosition) {
                     if (e2.getX() > WindowUtil.getScreenHeight(getContext(), false) / 2) {
-                        mChangeBrightness = true;
-                    } else {
                         mChangeVolume = true;
+                    } else {
+                        mChangeBrightness = true;
                     }
                 }
                 firstTouch = false;
