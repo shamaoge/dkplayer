@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.dueeeke.dkplayer.R;
 import com.dueeeke.dkplayer.bean.VideoBean;
+import com.dueeeke.videocontroller.MyStandardVideoController;
 import com.dueeeke.videocontroller.StandardVideoController;
 import com.dueeeke.videoplayer.player.IjkVideoView;
 import com.dueeeke.videoplayer.player.PlayerConfig;
@@ -39,11 +40,13 @@ public class VideoRecyclerViewAdapter extends RecyclerView.Adapter<VideoRecycler
         public void onBindViewHolder(final VideoHolder holder, int position) {
 
             VideoBean videoBean = videos.get(position);
+            holder.controller.setGIF(videoBean.isGif());
             Glide.with(context)
                     .load(videoBean.getThumb())
                     .crossFade()
                     .placeholder(android.R.color.white)
                     .into(holder.controller.getThumb());
+
             holder.ijkVideoView.setPlayerConfig(holder.mPlayerConfig);
             holder.ijkVideoView.setUrl(videoBean.getUrl());
             holder.ijkVideoView.setTitle(videoBean.getTitle());
@@ -60,7 +63,7 @@ public class VideoRecyclerViewAdapter extends RecyclerView.Adapter<VideoRecycler
         public class VideoHolder extends RecyclerView.ViewHolder {
 
             private IjkVideoView ijkVideoView;
-            private StandardVideoController controller;
+            private MyStandardVideoController controller;
             private TextView title;
             private PlayerConfig mPlayerConfig;
 
@@ -69,13 +72,14 @@ public class VideoRecyclerViewAdapter extends RecyclerView.Adapter<VideoRecycler
                 ijkVideoView = itemView.findViewById(R.id.video_player);
                 int widthPixels = context.getResources().getDisplayMetrics().widthPixels;
                 ijkVideoView.setLayoutParams(new LinearLayout.LayoutParams(widthPixels, widthPixels * 9 / 16 + 1));
-                controller = new StandardVideoController(context);
+                controller = new MyStandardVideoController(context);
                 title = itemView.findViewById(R.id.tv_title);
                 mPlayerConfig = new PlayerConfig.Builder()
                         .enableCache()
                         .autoRotate()
                         .addToPlayerManager()//required
-//                        .savingProgress()
+                        .savingProgress()
+                        .setLooping()
                         .build();
             }
         }

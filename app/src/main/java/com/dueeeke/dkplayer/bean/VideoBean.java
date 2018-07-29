@@ -9,6 +9,7 @@ public class VideoBean {
     private String title;
     private String url;
     private String thumb;
+    private boolean isGif = false;
 
     public String getTitle() {
         return title;
@@ -22,6 +23,8 @@ public class VideoBean {
         return url;
     }
 
+    public boolean isGif() { return isGif; }
+
     public void setUrl(String url) {
         this.url = url;
     }
@@ -34,10 +37,14 @@ public class VideoBean {
         this.thumb = thumb;
     }
 
-    public VideoBean(String title, String thumb, String url) {
+    public void setGif(boolean gif) {
+        isGif = gif;
+    }
+
+    public VideoBean(String title, String thumb, String url, boolean isGif) {
         this.title = title;
         this.url = url;
         this.thumb = thumb;
-
+        this.isGif = isGif;
     }
 }

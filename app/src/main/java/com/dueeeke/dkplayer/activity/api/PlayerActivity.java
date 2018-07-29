@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.dueeeke.dkplayer.R;
-import com.dueeeke.videocontroller.StandardVideoController;
+import com.dueeeke.videocontroller.MyStandardVideoController;
 import com.dueeeke.videoplayer.player.IjkVideoView;
 import com.dueeeke.videoplayer.player.PlayerConfig;
 
@@ -35,7 +35,8 @@ public class PlayerActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            StandardVideoController controller = new StandardVideoController(this);
+//            StandardVideoController controller = new StandardVideoController(this);
+            MyStandardVideoController controller = new MyStandardVideoController(this);
             boolean isLive = intent.getBooleanExtra("isLive", false);
             if (isLive) {
                 controller.setLive();

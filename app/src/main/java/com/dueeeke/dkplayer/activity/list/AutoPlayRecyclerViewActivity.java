@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.dueeeke.dkplayer.R;
 import com.dueeeke.dkplayer.adapter.VideoRecyclerViewAdapter;
@@ -113,6 +114,9 @@ public class AutoPlayRecyclerViewActivity extends AppCompatActivity {
             //自动播放第一个
             View view = recyclerView.getChildAt(0);
             IjkVideoView ijkVideoView = view.findViewById(R.id.video_player);
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)ijkVideoView.getLayoutParams();
+            layoutParams.height = 400;
+            ijkVideoView.setLayoutParams(layoutParams);
             ijkVideoView.start();
         });
 

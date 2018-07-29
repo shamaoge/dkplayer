@@ -13,8 +13,9 @@
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:lines="3"
         android:padding="10dp"
         tools:text="这是一个标题"/>
 
